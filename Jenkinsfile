@@ -1,7 +1,13 @@
 pipeline {
-  agent any
+  agent none
   stages {
     stage('build') {
+      agent {
+        docker {
+          image 'lagairogo/carts-maven'
+        }
+
+      }
       steps {
         echo 'this is the build job'
         sh 'mvn compile'
